@@ -1,6 +1,9 @@
 # Bloggex
 
 :warning: **Work in progress** :warning:
+
+Theme used for the user frontend: [Editorial by HTML5 UP](https://html5up.net/editorial)
+Theme used for the admin frontend: [AdminLTE v2 by Almsaeed Studio](https://adminlte.io/themes/AdminLTE/index2.html)
 ## Setup development environment with Docker
 
 This project is Docker friendly from day one. To start working on it:
