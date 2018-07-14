@@ -2,7 +2,7 @@ version: '2'
 services:
   db:
     image: postgres:9.6
-  multi_tenancex:
+  web:
     build: .
     command: mix phx.server
     volumes:
