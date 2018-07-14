@@ -78,7 +78,8 @@ module.exports = {
   plugins,
   context: source_path,
   entry: {
-    app: ['./css/app.scss', './js/app.js']
+    admin: ['./css/admin/admin.scss', './js/admin/admin.js'],
+    app: ['./css/app/app.scss', './js/app/app.js']
   },
 
   output: {
