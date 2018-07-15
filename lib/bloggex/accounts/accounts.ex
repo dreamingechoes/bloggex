@@ -38,6 +38,23 @@ defmodule Bloggex.Accounts do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Gets a single user by email.
+
+  Raises `Ecto.NoResultsError` if the user does not exist.
+
+  ## Examples
+
+      iex> get_user_by_email!("some@email.com")
+      %user{}
+
+      iex> get_user_by_email!("some@email.com")
+      ** (Ecto.NoResultsError)
+  """
+  def get_user_by_email!(email) do
+    Repo.one!(from(u in User, where: u.email == ^email))
+  end
+
+  @doc """
   Creates a user.
 
   ## Examples
