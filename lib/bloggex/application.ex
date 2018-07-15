@@ -11,7 +11,7 @@ defmodule Bloggex.Application do
       # Start the Ecto repository
       supervisor(Bloggex.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(BloggexWeb.Endpoint, []),
+      supervisor(BloggexWeb.Endpoint, [])
       # Start your own worker by calling: Bloggex.Worker.start_link(arg1, arg2, arg3)
       # worker(Bloggex.Worker, [arg1, arg2, arg3]),
     ]

@@ -26,13 +26,13 @@ defmodule BloggexWeb.ConnCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Bloggex.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Bloggex.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end

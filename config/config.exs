@@ -12,10 +12,10 @@ config :bloggex,
 # Configures the endpoint
 config :bloggex, BloggexWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "TggigzA5Kbhjg3SJ7CQksdsV6vUCLmTBBDNUwfay95sstTZymy3mpoD5KmqVabg6",
+  secret_key_base:
+    "TggigzA5Kbhjg3SJ7CQksdsV6vUCLmTBBDNUwfay95sstTZymy3mpoD5KmqVabg6",
   render_errors: [view: BloggexWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Bloggex.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Bloggex.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +24,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
