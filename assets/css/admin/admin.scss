@@ -1,0 +1,12 @@
+$fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
+@import "font-awesome/scss/font-awesome";
+
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+
+// Vendor styles
+@import "plugins/ionicons/ionicons-common";
+@import "plugins/ionicons/ionicons-icons";
+@import "plugins/ionicons/ionicons";
+@import "~admin-lte/dist/css/adminLTE";
+@import "~admin-lte/dist/css/skins/skin-blue";
