@@ -9,19 +9,44 @@ defmodule BloggexWeb.Router do
     plug(:put_secure_browser_headers)
   end
 
-  pipeline :api do
-    plug(:accepts, ["json"])
+  pipeline :browser_auth do
+    plug(BloggexWeb.Guardian.AuthPipeline)
+    plug(BloggexWeb.Plug.CurrentUser)
+  end
+
+  pipeline :browser_ensure_auth do
+    plug(Guardian.Plug.EnsureAuthenticated)
+    plug(BloggexWeb.Plug.CurrentUser)
+  end
+
+  pipeline :admin_layout do
+    plug(:put_layout, {BloggexWeb.Admin.LayoutView, :admin})
   end
 
   scope "/", BloggexWeb do
-    # Use the default browser stack
-    pipe_through(:browser)
+    # Admin scope
+    scope "/admin", Admin, as: :admin do
+      pipe_through([
+        :browser,
+        :browser_auth,
+        :browser_ensure_auth,
+        :admin_layout
+      ])
 
-    get("/", PageController, :index)
+      resources("/", DashboardController, only: [:index])
+      resources("/users", UserController)
+    end
+
+    # Application unauthenticated scope
+    scope "/" do
+      pipe_through([:browser, :browser_auth])
+
+      resources("/session", SessionController, only: [:new, :create])
+
+      # Log out resource
+      get("/logout", SessionController, :delete)
+
+      resources("/", PageController)
+    end
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", BloggexWeb do
-  #   pipe_through :api
-  # end
 end
