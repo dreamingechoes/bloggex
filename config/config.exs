@@ -22,6 +22,15 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+# Guardian configuration
+config :bloggex, Bloggex.Guardian,
+  issuer: "bloggex",
+  secret_key: "tbTHTcQjGnWIWr9sUNBqWSpHuhKwTkcUk7gbn9vM4exnaajtCvYjL240Y1rW+XT8"
+
+config :bloggex, BloggexWeb.AuthPipeline,
+  module: BloggexWeb.Guardian,
+  error_handler: BloggexWeb.AuthErrorHandler
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
