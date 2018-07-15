@@ -1,0 +1,43 @@
+<h2>Show User</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </li>
+
+  <li>
+    <strong>Surname:</strong>
+    <%= @user.surname %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Encrypted password:</strong>
+    <%= @user.encrypted_password %>
+  </li>
+
+  <li>
+    <strong>Avatar:</strong>
+    <%= @user.avatar %>
+  </li>
+
+  <li>
+    <strong>Job:</strong>
+    <%= @user.job %>
+  </li>
+
+  <li>
+    <strong>Biography:</strong>
+    <%= @user.biography %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: user_path(@conn, :index) %></span>
