@@ -39,5 +39,5 @@
 
 </ul>
 
-<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+<span><%= link "Edit", to: admin_user_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: admin_user_path(@conn, :index) %></span>
