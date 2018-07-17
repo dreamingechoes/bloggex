@@ -2,6 +2,8 @@
 
 :warning: **Work in progress** :warning:
 
+## Themes
+
 * **Theme used for the user frontend:** [Editorial by HTML5 UP](https://html5up.net/editorial)
 * **Theme used for the admin frontend:** [AdminLTE v2 by Almsaeed Studio](https://adminlte.io/themes/AdminLTE/index2.html)
 
