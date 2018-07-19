@@ -1,4 +1,4 @@
-defmodule BloggexWeb.UserController do
+defmodule BloggexWeb.Admin.UserController do
   use BloggexWeb, :controller
 
   alias Bloggex.Accounts
