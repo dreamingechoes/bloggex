@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin.css") %>">
   </head>
 
-  <body>
-    <div class="container">
+  <body class="hold-transition login-page">
+    <div class="login-box">
       <%= render "_flash_messages.html", assigns %>
       <%= render @view_module, @view_template, assigns %>
     </div>
