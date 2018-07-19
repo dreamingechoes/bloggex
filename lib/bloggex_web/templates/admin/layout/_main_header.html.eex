@@ -29,7 +29,7 @@
                 <a class="btn btn-default -btn-flat" href="#">Profile</a>
               </div>
               <div class="pull-right">
-                <a class="btn btn-default btn-flat" rel="nofollow" data-method="delete" href="#">Sign out</a>
+                <%= link gettext("Logout"), to: session_path(@conn, :delete), class: "btn btn-default btn-flat" %>
               </div>
             </li>
           </ul>
