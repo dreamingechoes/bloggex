@@ -1,38 +1,59 @@
-<h2>Listing Users</h2>
+<section class="content-header">
+  <h1>
+    Dashboard
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Email</th>
-      <th>Encrypted password</th>
-      <th>Avatar</th>
-      <th>Job</th>
-      <th>Biography</th>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Hover Data Table</h3>
+        </div>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for user <- @users do %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.surname %></td>
-      <td><%= user.email %></td>
-      <td><%= user.encrypted_password %></td>
-      <td><%= user.avatar %></td>
-      <td><%= user.job %></td>
-      <td><%= user.biography %></td>
+        <div class="box-body">
+          <table class="table table-bordered table-hover dataTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Job</th>
 
-      <td class="text-right">
-        <span><%= link "Show", to: admin_user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: admin_user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: admin_user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= for user <- @users do %>
+                  <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.surname %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.job %></td>
 
-<span><%= link "New User", to: admin_user_path(@conn, :new) %></span>
+                    <td class="text-right">
+                      <span><%= link "Show", to: admin_user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
+                      <span><%= link "Edit", to: admin_user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></span>
+                      <span><%= link "Delete", to: admin_user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                    </td>
+                  </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-md-offset-10">
+      <%= link "New User", to: admin_user_path(@conn, :new), class: "btn btn-success pull-right" %>
+    </div>
+  </div>
+</section>
