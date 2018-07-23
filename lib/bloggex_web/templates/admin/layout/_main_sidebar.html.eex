@@ -39,7 +39,7 @@
         </a>
       </li>
       <li class="header">ADMINISTRATION</li>
-      <li><a href="#"><i class="fa fa-users"></i> <span>Users</span></a></li>
+      <li><%= link raw('<i class="fa fa-users"></i> <span>Users</span>'), to: admin_user_path(@conn, :index) %></li>
     </ul>
   </section>
 </aside>
