@@ -1,12 +1,10 @@
 <div class="inner">
-  <!-- Search -->
   <section id="search" class="alt">
     <form method="post" action="#">
       <input type="text" name="query" id="query" placeholder="Search">
     </form>
   </section>
 
-  <!-- Menu -->
   <nav id="menu">
     <header class="major">
       <h2>Menu</h2>
@@ -27,7 +25,6 @@
     </ul>
   </nav>
 
-  <!-- Section -->
   <section>
     <header class="major">
       <h2>Get in touch</h2>
@@ -43,7 +40,7 @@
     </ul>
   </section>
 
-  <!-- Footer -->
   <%= render("_footer.html") %>
 </div>
+
 <a href="#sidebar" class="toggle">Toggle</a>
