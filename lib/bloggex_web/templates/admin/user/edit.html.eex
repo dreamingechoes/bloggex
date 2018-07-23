@@ -1,5 +1,26 @@
-<h2>Edit User</h2>
+<section class="content-header">
+  <h1>
+    Users
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Users</li>
+  </ol>
+</section>
 
-<%= render "form.html", Map.put(assigns, :action, admin_user_path(@conn, :update, @user)) %>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Edit User</h3>
+        </div>
 
-<span><%= link "Back", to: admin_user_path(@conn, :index) %></span>
+        <div class="box-body">
+          <%= render "form.html", Map.put(assigns, :action, admin_user_path(@conn, :update, @user)) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

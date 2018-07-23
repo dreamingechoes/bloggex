@@ -1,43 +1,67 @@
-<h2>Show User</h2>
+<section class="content-header">
+  <h1>
+    Users
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Users</li>
+  </ol>
+</section>
 
-<ul>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Show User</h3>
+        </div>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </li>
+        <div class="box-body">
+          <ul>
 
-  <li>
-    <strong>Surname:</strong>
-    <%= @user.surname %>
-  </li>
+            <li>
+              <strong>Name:</strong>
+              <%= @user.name %>
+            </li>
 
-  <li>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </li>
+            <li>
+              <strong>Surname:</strong>
+              <%= @user.surname %>
+            </li>
 
-  <li>
-    <strong>Encrypted password:</strong>
-    <%= @user.encrypted_password %>
-  </li>
+            <li>
+              <strong>Email:</strong>
+              <%= @user.email %>
+            </li>
 
-  <li>
-    <strong>Avatar:</strong>
-    <%= @user.avatar %>
-  </li>
+            <li>
+              <strong>Encrypted password:</strong>
+              <%= @user.encrypted_password %>
+            </li>
 
-  <li>
-    <strong>Job:</strong>
-    <%= @user.job %>
-  </li>
+            <li>
+              <strong>Avatar:</strong>
+              <%= @user.avatar %>
+            </li>
 
-  <li>
-    <strong>Biography:</strong>
-    <%= @user.biography %>
-  </li>
+            <li>
+              <strong>Job:</strong>
+              <%= @user.job %>
+            </li>
 
-</ul>
+            <li>
+              <strong>Biography:</strong>
+              <%= @user.biography %>
+            </li>
 
-<span><%= link "Edit", to: admin_user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: admin_user_path(@conn, :index) %></span>
+          </ul>
+
+          <span><%= link "Edit", to: admin_user_path(@conn, :edit, @user), class: "btn btn-sm btn-warning" %></span>
+          <span><%= link "Back", to: admin_user_path(@conn, :index), class: "btn btn-sm btn-success"%></span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
