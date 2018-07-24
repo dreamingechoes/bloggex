@@ -2,7 +2,7 @@ defmodule BloggexWeb.Admin.UserController do
   use BloggexWeb, :controller
 
   alias Bloggex.Accounts
-  alias Bloggex.Accounts.User
+  alias Bloggex.Accounts.Schemas.User
 
   def index(conn, _params) do
     users = Accounts.list_users()

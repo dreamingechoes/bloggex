@@ -1,4 +1,4 @@
-defmodule Bloggex.Accounts.User do
+defmodule Bloggex.Accounts.Schemas.User do
   use Ecto.Schema
 
   import Ecto.Changeset
