@@ -26,7 +26,7 @@
 
             <li class="user-footer">
               <div class="pull-left">
-                <a class="btn btn-default -btn-flat" href="#">Profile</a>
+                <%= link gettext("Profile"), to: admin_user_path(@conn, :edit, @conn.assigns.current_user), class: "btn btn-default btn-flat" %>
               </div>
               <div class="pull-right">
                 <%= link gettext("Logout"), to: session_path(@conn, :delete), class: "btn btn-default btn-flat" %>
