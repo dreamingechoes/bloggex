@@ -26,11 +26,6 @@ defmodule BloggexWeb.Admin.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    user = Accounts.get_user!(id)
-    render(conn, "show.html", user: user)
-  end
-
   def edit(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     changeset = Accounts.change_user(user)

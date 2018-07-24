@@ -34,7 +34,7 @@ defmodule BloggexWeb.Router do
       ])
 
       resources("/", DashboardController, only: [:index])
-      resources("/users", UserController)
+      resources("/users", UserController, except: [:show])
     end
 
     # Application unauthenticated scope
