@@ -42,21 +42,9 @@ defmodule Bloggex.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      # Default Phoenix stuff
-      {:cowboy, "~> 1.1.2"},
-      {:gettext, "~> 0.13.1"},
-      {:phoenix, "~> 1.3.3", override: true},
-      {:phoenix_ecto, "~> 3.3.0"},
-      {:postgrex, ">= 0.13.3"},
-      {:phoenix_pubsub, "~> 1.0.2"},
-
-      # Frontend
-      {:phoenix_html, "~> 2.10.4"},
-      {:phoenix_live_reload, "~> 1.1.1", only: :dev},
-
       # Authentication
-      {:comeonin, "~> 4.1.1"},
       {:bcrypt_elixir, "~> 0.12"},
+      {:comeonin, "~> 4.1.1"},
       {:guardian, "~> 1.0"},
 
       # Code analysis
@@ -66,12 +54,28 @@ defmodule Bloggex.Mixfile do
       # Code documentation
       {:ex_doc, "~> 0.16.4", only: :dev, runtime: false},
 
+      # Default Phoenix stuff
+      {:cowboy, "~> 1.1.2"},
+      {:gettext, "~> 0.13.1"},
+      {:phoenix_ecto, "~> 3.3.0"},
+      {:phoenix_pubsub, "~> 1.0.2"},
+      {:phoenix, "~> 1.3.3", override: true},
+      {:postgrex, ">= 0.13.3"},
+
+      # File uploading
+      {:arc, "~> 0.10.0"},
+      {:arc_ecto, "~> 0.10.0"},
+
+      # Frontend
+      {:phoenix_html, "~> 2.10.4"},
+      {:phoenix_live_reload, "~> 1.1.1", only: :dev},
+
       # Random
       {:timex, "~> 3.2.1"},
 
       # Testing and seeding data
-      {:faker, "~> 0.9.0"},
-      {:excoveralls, "~> 0.7.3", only: [:test]}
+      {:excoveralls, "~> 0.7.3", only: [:test]},
+      {:faker, "~> 0.9.0"}
     ]
   end
 
