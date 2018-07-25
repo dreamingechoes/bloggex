@@ -16,7 +16,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y sudo wget curl inotify-tools git build-essential zip unzip bcrypt
+    apt-get install -y sudo wget curl inotify-tools git build-essential zip unzip bcrypt imagemagick
 
 # Download and install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && apt-get install -y nodejs
