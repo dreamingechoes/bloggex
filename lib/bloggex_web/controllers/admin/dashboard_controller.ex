@@ -1,7 +1,7 @@
 defmodule BloggexWeb.Admin.DashboardController do
   use BloggexWeb, :controller
 
-  alias Bloggex.Accounts.User
+  alias Bloggex.Accounts.Schemas.User
   alias Bloggex.Repo
 
   def index(conn, _params) do
