@@ -2,7 +2,10 @@ defmodule Bloggex.Accounts.Managers.User do
   import Ecto.Query, warn: false
 
   alias Bloggex.Accounts.Schemas.User
+  alias Bloggex.Accounts.Uploaders.Avatar
   alias Bloggex.Repo
+  alias Bloggex.Uploaders.Uploader
+  alias Ecto.Multi
 
   @doc """
   Returns the list of users.
@@ -63,9 +66,16 @@ defmodule Bloggex.Accounts.Managers.User do
 
   """
   def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
+    result =
+      Multi.new()
+      |> Multi.insert(:user, User.changeset(%User{}, attrs))
+      |> Multi.run(:avatar, &create_avatar(&1, attrs))
+      |> Repo.transaction()
+
+    case result do
+      {:ok, changes} -> {:ok, changes.user}
+      {:error, _, changeset, _} -> {:error, changeset}
+    end
   end
 
   @doc """
@@ -81,9 +91,24 @@ defmodule Bloggex.Accounts.Managers.User do
 
   """
   def update_user(%User{} = user, attrs) do
-    user
-    |> User.changeset(attrs)
-    |> Repo.update()
+    result =
+      case is_nil(Map.get(attrs, "avatar")) do
+        false ->
+          # We only want to update the avatar if the attr is sent
+          Multi.new()
+          |> Multi.update(:user, User.changeset(user, attrs))
+          |> Multi.run(:old_avatar, &delete_avatar(&1))
+          |> Multi.run(:avatar, &create_avatar(&1, attrs))
+
+        true ->
+          Multi.new()
+          |> Multi.update(:user, User.changeset(user, attrs))
+      end
+
+    case Repo.transaction(result) do
+      {:ok, changes} -> {:ok, changes.user}
+      {:error, _, changeset, _} -> {:error, changeset}
+    end
   end
 
   @doc """
@@ -99,7 +124,16 @@ defmodule Bloggex.Accounts.Managers.User do
 
   """
   def delete_user(%User{} = user) do
-    Repo.delete(user)
+    result =
+      Multi.new()
+      |> Multi.delete(:user, user)
+      |> Multi.run(:avatar, &delete_avatar(&1))
+      |> Repo.transaction()
+
+    case result do
+      {:ok, changes} -> {:ok, changes.user}
+      {:error, _, changeset, _} -> {:error, changeset}
+    end
   end
 
   @doc """
@@ -113,5 +147,20 @@ defmodule Bloggex.Accounts.Managers.User do
   """
   def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  defp create_avatar(%{user: user}, attrs) do
+    user
+    |> User.avatar_changeset(attrs)
+    |> Repo.update()
+  end
+
+  defp delete_avatar(%{user: user}) do
+    path = Uploader.file_path(user, user.avatar, Avatar)
+
+    case Avatar.delete({path, user}) do
+      :ok -> {:ok, user}
+      _ -> {:error, user}
+    end
   end
 end
