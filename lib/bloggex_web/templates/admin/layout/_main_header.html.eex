@@ -11,13 +11,12 @@
       <ul class="nav navbar-nav">
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-            <img class="user-image" src="http://via.placeholder.com/50x50" alt="About">
+            <%= img_tag Bloggex.Accounts.Uploaders.Avatar.url({@conn.assigns.current_user.avatar, @conn.assigns.current_user}, :thumb, signed: true), class: "user-image" %>
             <span class="hidden-xs"><%= @conn.assigns.current_user.name %></span>
           </a>
           <ul class="dropdown-menu">
             <li class="user-header">
-              <img class="img-circle" src="http://via.placeholder.com/50x50" alt="About">
-
+              <%= img_tag Bloggex.Accounts.Uploaders.Avatar.url({@conn.assigns.current_user.avatar, @conn.assigns.current_user}, :thumb, signed: true), class: "img-circle" %>
               <p>
                 <%= @conn.assigns.current_user.name %> - <%= @conn.assigns.current_user.job %>
                 <small><%= @conn.assigns.current_user.inserted_at %></small>
