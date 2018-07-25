@@ -55,3 +55,6 @@ config :bloggex, Bloggex.Repo,
   database: "bloggex_dev",
   hostname: "db",
   pool_size: 10
+
+# Arc configuration
+config :arc, storage: Arc.Storage.Local
