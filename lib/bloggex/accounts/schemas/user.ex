@@ -1,10 +1,13 @@
 defmodule Bloggex.Accounts.Schemas.User do
+  use Arc.Ecto.Schema
   use Ecto.Schema
 
   import Ecto.Changeset
 
+  alias Bloggex.Accounts.Uploaders.Avatar
+
   schema "users" do
-    field(:avatar, :string)
+    field(:avatar, Avatar.Type)
     field(:biography, :string)
     field(:email, :string)
     field(:encrypted_password, :string)
@@ -24,7 +27,6 @@ defmodule Bloggex.Accounts.Schemas.User do
       :surname,
       :email,
       :password,
-      :avatar,
       :job,
       :biography
     ])
@@ -32,6 +34,12 @@ defmodule Bloggex.Accounts.Schemas.User do
     |> validate_confirmation(:password)
     |> unique_constraint(:email)
     |> generate_encrypted_password()
+  end
+
+  @doc false
+  def avatar_changeset(user, attrs) do
+    user
+    |> cast_attachments(attrs, [:avatar])
   end
 
   defp generate_encrypted_password(%Ecto.Changeset{valid?: true} = changeset) do
