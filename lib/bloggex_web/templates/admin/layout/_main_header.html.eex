@@ -18,8 +18,8 @@
             <li class="user-header">
               <%= img_tag Bloggex.Accounts.Uploaders.Avatar.url({@conn.assigns.current_user.avatar, @conn.assigns.current_user}, :thumb, signed: true), class: "img-circle" %>
               <p>
-                <%= @conn.assigns.current_user.name %> - <%= @conn.assigns.current_user.job %>
-                <small><%= @conn.assigns.current_user.inserted_at %></small>
+                <%= "#{@conn.assigns.current_user.name} #{@conn.assigns.current_user.surname}" %>
+                <small><%= @conn.assigns.current_user.email %></small>
               </p>
             </li>
 
