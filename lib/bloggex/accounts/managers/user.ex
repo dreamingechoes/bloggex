@@ -96,13 +96,13 @@ defmodule Bloggex.Accounts.Managers.User do
         false ->
           # We only want to update the avatar if the attr is sent
           Multi.new()
-          |> Multi.update(:user, User.changeset(user, attrs))
+          |> Multi.update(:user, User.update_changeset(user, attrs))
           |> Multi.run(:old_avatar, &delete_avatar(&1))
           |> Multi.run(:avatar, &create_avatar(&1, attrs))
 
         true ->
           Multi.new()
-          |> Multi.update(:user, User.changeset(user, attrs))
+          |> Multi.update(:user, User.update_changeset(user, attrs))
       end
 
     case Repo.transaction(result) do

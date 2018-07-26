@@ -20,7 +20,11 @@ defmodule Bloggex.Accounts.Schemas.User do
   end
 
   @doc false
-  def changeset(user, attrs) do
+  def changeset(
+        user,
+        attrs,
+        attrs_required \\ [:name, :surname, :email, :password]
+      ) do
     user
     |> cast(attrs, [
       :name,
@@ -30,16 +34,20 @@ defmodule Bloggex.Accounts.Schemas.User do
       :job,
       :biography
     ])
-    |> validate_required([:name, :surname, :email, :password])
+    |> validate_required(attrs_required)
     |> validate_confirmation(:password)
     |> unique_constraint(:email)
     |> generate_encrypted_password()
   end
 
   @doc false
+  def update_changeset(user, attrs) do
+    changeset(user, attrs, [:name, :surname, :email])
+  end
+
+  @doc false
   def avatar_changeset(user, attrs) do
-    user
-    |> cast_attachments(attrs, [:avatar])
+    cast_attachments(user, attrs, [:avatar])
   end
 
   defp generate_encrypted_password(%Ecto.Changeset{valid?: true} = changeset) do
