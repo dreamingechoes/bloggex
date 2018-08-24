@@ -5,7 +5,7 @@ defmodule Bloggex.Mixfile do
     [
       app: :bloggex,
       version: "0.0.1",
-      elixir: "~> 1.6",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -59,7 +59,7 @@ defmodule Bloggex.Mixfile do
       {:gettext, "~> 0.13.1"},
       {:phoenix_ecto, "~> 3.3.0"},
       {:phoenix_pubsub, "~> 1.0.2"},
-      {:phoenix, "~> 1.3.3", override: true},
+      {:phoenix, "~> 1.3.4", override: true},
       {:postgrex, ">= 0.13.3"},
 
       # File uploading
